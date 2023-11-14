@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Essay Generator</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Essay Generator</h1>
+        <form action="/generate" method="POST">
+            <label for="subject">Sujet : </label>
+            <input type="text" id="subject" name="subject" required><br>
+
+            <label for="type">Type de text : </label>
+            <select id="type" name="type" required>
+                <option value="un paragraphe">Un paragraphe</option>
+                <option value="un texte narratif">Un texte narratif</option>
+                <option value="un texte descriptif">Un texte descriptif</option>
+                <option value="un texte argumentatif">Un texte argumentatif</option>
+                <option value="un texte explicatif">Un texte explicatif</option>
+            </select><br>
+
+            <label for="level">Niveau de vocabulaire : </label>
+            <select id="level" name="level" required>
+                <option value="debutant">Debutant</option>
+                <option value="intermediaire">Intermediaire</option>
+                <option value="avancé">Avancé</option>
+            </select><br>
+
+            <button type="submit">Produire Mon Essai</button>
+        </form>
+
+        {% if essay_content %}
+        <div class="essay">
+            <h2>Generated Essay</h2>
+            <p>{{ essay_content }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+
+</html>
